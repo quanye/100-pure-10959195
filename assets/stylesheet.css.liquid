@@ -470,7 +470,7 @@ a.checkout-link:hover { background: {{ settings.read-more-hover-background }}! i
 #hello { text-align: center; }
 #hello p { color: {{ settings.hello-color }}; font-size: {{ settings.hello-size }}; font-weight: {{ settings.hello-weight }}; }
 
-#logo { {% if settings.logo-border != "no" }}border-bottom: {{ settings.logo-border-size %} solid {{ settings.logo-border-color }}; margin-bottom: 20px;{% endif %} position: relative; margin-top: 20px; text-align: center; padding: 0 0 20px 0; }
+#logo { {% if settings.logo-border != "no" }}border-bottom: {{ settings.logo-border-size %} solid {{ settings.logo-border-color }}; margin-bottom: 20px;{% endif %} position: relative; margin-top: 0px; text-align: center; padding: 0 0 0px 0; }
 #logo a { font-family: {{ settings.logo-font }}; font-size: {{ settings.logo-size }}; text-transform: {{ settings.logo-transform }}; font-weight: {{ settings.logo-weight }}; color: {{ settings.logo-color }}; text-decoration: none; }
 
 #content { margin-bottom: 50px; {% if template != 'index' %}margin-top: 10px;{% endif %} position: relative; }

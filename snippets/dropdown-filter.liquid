@@ -3,16 +3,19 @@
 {% if settings.sort-dropdown-a-check %}                        
   <li class="clearfix filter">
 {% assign tags = settings.sort_a  | replace: ' ,', ',' | replace: ', ', ',' | split: ',' %}    
-<h4>{{ settings.sort-a }}</h4>
+  <h4>{{ settings.sort-a }}</h4>
+    {% if tags %}
+    {% else %}
     <ul>
       {% for tag in tags %}
-      {% if current_tags contains tag %}
-    <li class="current">{{ tag | link_to_remove_tag: tag }}</li>
-    {% elsif collection.all_tags contains tag %}
-    <li>{{ tag | link_to_add_tag: tag }}</li>
-      {% endif %}
+        {% if current_tags contains tag %}
+          <li class="current">{{ tag | link_to_remove_tag: tag }}</li>
+        {% elsif collection.all_tags contains tag %}
+          <li>{{ tag | link_to_add_tag: tag }}</li>
+        {% endif %}
       {% endfor %}
     </ul>
+    {% endif %}
   </li>
 {% endif %}
   
@@ -24,14 +27,15 @@
 <h4>{{ settings.sort-b }}</h4>
     <ul>
       {% for tag in tags %}
-      {% if current_tags contains tag %}
-    <li class="current">{{ tag | link_to_remove_tag: tag }}</li>
-    {% elsif collection.all_tags contains tag %}
-    <li>{{ tag | link_to_add_tag: tag }}</li>
-      {% endif %}
+        {% if current_tags contains tag %}
+          <li class="current">{{ tag | link_to_remove_tag: tag }}</li>
+        {% elsif collection.all_tags contains tag %}
+          <li>{{ tag | link_to_add_tag: tag }}</li>
+        {% endif %}
       {% endfor %}
     </ul>
   </li>
+
 {% endif %}
 
 {% if settings.sort-dropdown-c-check %}

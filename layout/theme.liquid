@@ -240,6 +240,17 @@
   
   <div class="page-wrap">
     
+    
+    <div class="row">
+      <div id="logo" class="desktop-12 mobile-3">       
+        {% if settings.use_logo_image %}
+        <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
+        {% else %}
+        <a href="/">{{ shop.name }}</a>
+        {% endif %}           
+      </div> 
+    </div>
+
     <header>
       <div class="row">
         
@@ -288,16 +299,7 @@
         
       </div>   
     </header>
-    
-    <div class="row">
-      <div id="logo" class="desktop-12 mobile-3">       
-        {% if settings.use_logo_image %}
-        <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
-        {% else %}
-        <a href="/">{{ shop.name }}</a>
-        {% endif %}           
-      </div> 
-    </div>
+
     
     <div class="clear"></div>
     
@@ -354,30 +356,16 @@
     {% else %}
     {{ content_for_layout }}
     {% endif %}
-    
-    
-    <div class="row">
-      <div id="logo" class="desktop-12 mobile-3">       
-        {% if settings.use_logo_image %}
-        <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
-        {% else %}
-        <a href="/">{{ shop.name }}</a>
-        {% endif %}           
-      </div> 
-    </div>    
-    
+
+
     
   </div>  <!-- End page wrap for sticky footer -->
   
-  <div id="footer-wrapper">	
-    <div id="footer" class="row">		
-      <div class="credit desktop-12">
-        <p>Copyright &copy; {{ 'now' | date: "%Y" }} {{ shop.name }} • <a href="http://www.shopifythemes.net" target="_blank" title="Shopify theme">Shopify Theme</a> by Underground Media • {{ powered_by_link }}</p>
-      </div>
-    </div> 
-  </div>
+
   
-  
+  {% include 'footer' %}
+
+
   {% include 'mailing' %}
   
   <div style='display:none'>
@@ -396,30 +384,23 @@
   
   
   {% raw %}
-  <script id="cartTemplate" type="text/x-handlebars-template">
- 
-  {{#each items}}
-    <div id="cart-item">
-      <div class="quick-cart-image">
-        <a href="{{ this.url }}" title="{{ this.title }}">
-          <img src="{{ this.image }}"  alt="{{ this.title }}" />
-  </a>
-  </div>
-      <div class="quick-cart-details">
-        <p>
-          <a href="{{ this.url }}">{{ this.title }}</a>
-  </p>
-        <p>{{ this.price }}</p>          
-        <p>
-          <a class="remove_item" href="#" data-id="{{ this.id }}">Remove</a>
-  </p>
-  </div>
-  </div>
-  {{/each}}   
-  <a class="checkout-link" href="/cart">checkout</a>
-
-  </script>
-  
+    <script id="cartTemplate" type="text/x-handlebars-template"> 
+      {{#each items}}
+        <div id="cart-item">
+            <div class="quick-cart-image">
+              <a href="{{ this.url }}" title="{{ this.title }}">
+                <img src="{{ this.image }}"  alt="{{ this.title }}" />
+              </a>
+            </div>
+            <div class="quick-cart-details">
+              <p><a href="{{ this.url }}">{{ this.title }}</a></p>
+              <p>{{ this.price }}</p>          
+              <p><a class="remove_item" href="#" data-id="{{ this.id }}">Remove</a></p>
+            </div>
+        </div>
+      {{/each}}
+      <a class="checkout-link" href="/cart">checkout</a>
+    </script>    
   {% endraw %}  
   
   
